@@ -3,6 +3,20 @@ import h5py
 import pandas as pd
 import numpy as np
 class DalekDataSet():
+    """Manager for input parameters and output spectra for a Dalek emulator
+
+    Attributes
+    ----------
+    parameters : pd.DataFrame
+        Input parameters corresponding to provided spectra
+    spectra : np.ndarray
+        Output spectra corresponding to provided parameters
+    wavelength : np.ndarray
+        wavelength corresponding to each spectral bin
+    meta : pd.Series
+        verious metadata describing additional contents or formats
+
+    """
 
     @classmethod
     def from_hdf(cls, fname):
@@ -15,6 +29,8 @@ class DalekDataSet():
         return cls(parameters, spectra, wavelength, meta)
 
     def __init__(self, parameters, spectra, wavelength, meta=None):
+
+        assert len(parameters) == len(spectra), "Parameters and spectra are not the same shape!"
         self.parameters = parameters
         self.spectra = spectra
         self.wavelength = wavelength
