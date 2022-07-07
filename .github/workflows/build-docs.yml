@@ -8,11 +8,11 @@ on:
 
   push:
     branches:
-      - master
+      - main
 
   pull_request_target:
     branches:
-      - master
+      - main
 
     types:
       - opened
