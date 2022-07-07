@@ -5,7 +5,8 @@ import pandas as pd
 class DalekDataSet():
     @classmethod
     def from_hdf(cls, fname):
-        pass
+        parameters = pd.read_hdf(fname, 'parameters')
+        
 
     def __init__(self, parameters, fluxes, wavelength, meta=None):
         self.parameters = parameters
